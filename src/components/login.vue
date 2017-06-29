@@ -1,5 +1,6 @@
 <template>
 <div>
+	<div class="top"></div>
 	<div class="demo-infinite-container">
 		<h3>登录</h3>
 		<input type="text" name="username" class="username" placeholder="请输入用户名" v-model="username">
@@ -61,10 +62,16 @@ input,textarea{
 	margin:0;
 	padding:0;
 }
+.top{
+	width:100%;
+	height: 2.8rem;
+	background: url("../assets/top_bg.jpg") no-repeat;
+	background-size: cover;
+}
 .demo-infinite-container{
 	width:6rem;
 	margin:0 auto;
-	padding-top: 40%;
+	padding-top: 8%;
 	text-align: center;
 }
 .username,.password,.register{

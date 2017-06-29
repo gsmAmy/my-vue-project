@@ -31,7 +31,7 @@ export default{
             let $this = this;
             Array.from(info).forEach(item => {
                 if(item.islogin == 1){
-                    $this.user = item.username+ ",欢迎您来到水果乐园" 
+                    $this.user = item.username+ ",欢迎您来到乐园" 
                 }
             })            
         },
