@@ -6,9 +6,11 @@ import router from './router'
 import axios from 'axios'
 Vue.config.productionTip = false
 import MuseUI from 'muse-ui'
+import ls from 'store'
 Vue.use({
     install(Vue) {
         Vue.prototype.$Axios = axios;
+        Vue.prototype.$ls = ls;
     }
 })
 Vue.use(MuseUI);

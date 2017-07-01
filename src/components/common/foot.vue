@@ -6,8 +6,8 @@
 		<router-link to="/collect">
 			<span>记录</span>
 		</router-link>
-		<router-link to="/register">
-			<span>注册</span>
+		<router-link to="/my">
+			<span>我</span>
 		</router-link>
 	</div>
 </template>

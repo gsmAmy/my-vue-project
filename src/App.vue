@@ -41,7 +41,7 @@ ul,p{
 a{
     text-decoration:none;
 }
-em,i{
+em,i,a{
   font-style: normal;
 }
 </style>

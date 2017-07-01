@@ -4,13 +4,6 @@
             <span v-for="(item,index) in tabData" v-bind:class="{active:index==current}" @click="getContent(index)" v-bind:key="index">{{item.title}}</span>
         </div>
         <ul class="tab-content">
-            <!-- <li v-for="item in listData">
-                <img v-bind:src="item.url">
-                <div class="introduce">
-                    <p>{{item.name}}</P>
-                    <span>¥{{item.current_price}}</span>
-                </div>
-            </li>-->
             <mu-list>
                 <template>
                     <li v-for="(item,index) in listData" v-bind:key="index">
@@ -19,6 +12,7 @@
                             <p>{{item.name}}</P>
                             <span>¥{{item.current_price}}</span>
                         </div>
+                        <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
                     </li>
                 </template>
             </mu-list>
@@ -36,14 +30,15 @@ export default {
                 { title: '全球鲜果' },
                 { title: '生鲜美食' }
             ],
-            pageData: '',
-            listData: '',
+            pageData:[],
+            listData: [],
             num: 130,
             category_id: 1538610584,
             page: 0,
             eachNum: 31,
             loading: false,
-            scroller: null
+            scroller: null,
+            collectList:[]
         }
     },
     mounted() {
@@ -63,6 +58,7 @@ export default {
         this.getPageListData();
     },
     methods: {
+        /*getContent()根据tab改变URL参数num、category_id的值*/
         getContent(index) {
             this.current = index;
             if (index == 0) {
@@ -76,16 +72,13 @@ export default {
                 this.category_id = 1538585402;
             }
         },
-        getPageListData(arg) {
-            var $this = this;
-            this.$Axios.get($this.url).then(function (response) {
-                $this.pageData = response.data.result.menu_info.menu_list;
-                if (arg) {
-                    $this.listData.push($this.pageData);
-                    $this.loading = false
-                } else {
-                    $this.listData = $this.pageData;
-                }
+        /*请求数据获取listData*/
+        getPageListData() {
+            this.$Axios
+            .get(this.url)
+            .then(res => res.data)
+            .then(data => {
+                this.listData = data.result.menu_info.menu_list.map(t => (t.islike = !1,t))
             })
         },
         loadMore() {
@@ -93,7 +86,28 @@ export default {
             this.page = 1;
             this.getPageListData(1);
             this.eachNum += 31;
+        },
+        /*收藏*/
+        collect(item){
+            item.islike = !item.islike;
+            if(item.islike){
+                this.collectList.push(item)
+            }else{
+                let collectObjNow = this.$ls.get("collectObj");
+                // collectObjNow.filter(v => item.id !=  v.id);
+                let collectObjNew = [];
+                collectObjNow.filter(v => {
+                    if(v.id != item.id){
+                        collectObjNew.push(v);
+                    }
+                })
+                this.collectList = collectObjNew;
+            }
+            this.$ls.set("collectObj",this.collectList)
         }
+    },
+    mounted(){
+        // console.log(this.tabData)
     }
 }
 
@@ -136,7 +150,21 @@ export default {
     width: 1.5rem;
     height: 1.5rem;
 }
-
+.tab-content li i{
+    display: inline-block;
+    width:0.3rem;
+    height:0.3rem;
+    background-size: contain;
+    position: absolute;
+    right:0.3rem;
+    bottom:0.9rem;
+}
+.i_like{
+    background: url("../assets/images/i_like.png");
+}
+.i_likes{
+    background: url("../assets/images/i_like_s.png");
+}
 .introduce {
     flex-grow: 1;
     padding-left: 0.3rem;

@@ -4,6 +4,8 @@ import home from '@/components/home'
 import collect from '@/components/collect'
 import register from '@/components/register'
 import login from '@/components/login'
+import my from '@/components/my'
+import mycollect from '@/components/mycollect'
 Vue.use(Router)
 export default new Router({
     routes: [{
@@ -25,6 +27,16 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: login
+        },
+        {
+            path: '/my',
+            name: 'my',
+            component: my
+        },
+        {
+            path: '/mycollect',
+            name: 'mycollect',
+            component: mycollect
         }
     ]
 })

@@ -65,7 +65,7 @@ input,textarea{
 .top{
 	width:100%;
 	height: 2.8rem;
-	background: url("../assets/top_bg.jpg") no-repeat;
+	background: url("../assets/images/top_bg.jpg") no-repeat;
 	background-size: cover;
 }
 .demo-infinite-container{

@@ -75,6 +75,7 @@ export default{
     top:1rem;
     right:0;
     background: #F0EEF0;
+    z-index:99;
 }
 .login p{
     padding:0.2rem 0.5rem;
