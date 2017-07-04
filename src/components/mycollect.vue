@@ -33,8 +33,8 @@ export default {
 }
 </script>
 
-<style>
- /*@import './assets/less/commonlist.less';*/
+<style lang="less">
+ @import '../assets/less/commonlist.less';
  .collect_wrap .title{
     height:1rem;
     line-height: 1rem;
@@ -43,55 +43,5 @@ export default {
     text-align: center;
     background: #8cb91e;
  }
- .tab-content {
-    padding: 0 0.1rem;
-}
-
-.tab-content li {
-    display: flex;
-    display: -webkit-flex;
-    border-bottom: 1px solid #dcdcdc;
-    padding: 0.1rem 0;
-    position: relative;
-}
-
-.tab-content li img {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-.tab-content li i{
-    display: inline-block;
-    width:0.3rem;
-    height:0.3rem;
-    background-size: contain;
-    position: absolute;
-    right:0.3rem;
-    bottom:0.9rem;
-}
-.i_like{
-    background: url("../assets/images/i_like.png");
-}
-.i_likes{
-    background: url("../assets/images/i_like_s.png");
-}
-.introduce {
-    flex-grow: 1;
-    padding-left: 0.3rem;
-}
-
-.introduce p {
-    padding: 0.1rem 0;
-}
-
-.introduce span {
-    position: absolute;
-    right: 0.4rem;
-    bottom: 0.2rem;
-    font-size: 18px;
-    color: #f63;
-}
-</style>
-
-
-
+ </style>
 

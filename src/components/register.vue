@@ -47,75 +47,7 @@ export default {
 }
 </script>
 
-<style scoped>
-input,textarea{
-	margin:0;
-	padding:0;
-}
-.top{
-	width:100%;
-	height: 2.8rem;
-	background: url("../assets/images/top_bg.jpg") no-repeat;
-	background-size: cover;
-}
-.demo-infinite-container{
-	width:6rem;
-	margin:0 auto;
-	padding-top: 8%;
-	text-align: center;
-}
-.username,.password,.register{
-	width:100%;
-	height:0.8rem;
-	margin:0.1rem 0;
-	padding:0 0.2rem;
-	box-sizing: border-box;
-	border:1px solid #e9e9e9;
-}
-.txtarea{
-	width:100%;
-	margin-top:0.2rem;
-	border:1px solid #e9e9e9;
-}
-.produce{
-	padding-top:0.5rem;
-	font-size: 14px;
-}
-.register{
-	background: #73c5ec;
-	color:#fff;
-	font-size:16px;
-}
-.reg_dialog{
-	width: 100%;
-	height:100%;
-	background: rgba(0,0,0,0.5);
-	position:fixed;
-	top:0;
-	left: 0;
-	font-size:16px;
-	text-align: center;
-}
-.reg_dialog div{
-	width:6rem;
-	background: #fff;
-	margin:0 auto;
-	margin-top:60%;
-	padding: 0.2rem 0 0.5rem 0;
-	border-radius: 3px
-}
-.regsuccess{
-	padding:0.35rem 0;
-	margin-bottom: 0.24rem;
-	font-size:16px;
-}
-.sure{
-	background: #73c5ec;
-	width:2.5rem;
-	height:0.75rem;
-	line-height:0.75rem;
-	border-radius: 5px;
-	margin:0 auto;
-	color:#fff;
-}
+<style lang="less">
+@import "../assets/less/login.less";
+
 </style>

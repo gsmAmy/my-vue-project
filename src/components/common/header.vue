@@ -43,42 +43,6 @@ export default{
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.header{
-    padding:0.1rem .3rem 0.1rem 0.1rem;
-    background:#8cb91e;
-    color:#fff;
-    display:flex;
-    display:-webkit-flex;
-    align-items:center; 
-}
-.header img{
-    width:0.8rem;
-    height:0.8rem;
-}
-.header .welcome{
-    flex-grow:1;
-    text-align:center;
-    font-size:16px;
-}
-.header .extend:after,.extend:before,.extend i{
-    content:'';
-    display:inline-block;
-    width:4px;
-    height:4px;
-    border-radius:2px;
-    background:#fff;
-    margin-left:3px;
-}
-.login{
-    position:absolute;
-    top:1rem;
-    right:0;
-    background: #F0EEF0;
-    z-index:99;
-}
-.login p{
-    padding:0.2rem 0.5rem;
-    color: #8cb91e;
-}
+<style lang="less">
+@import "../../assets/less/header.less";
 </style>
