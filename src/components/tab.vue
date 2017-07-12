@@ -4,19 +4,28 @@
             <span v-for="(item,index) in tabData" v-bind:class="{active:index==current}" @click="getContent(index)" v-bind:key="index">{{item.title}}</span>
         </div>
         <ul class="tab-content">
-            <mu-list>
-                <template>
-                    <li v-for="(item,index) in listData" v-bind:key="index">
-                        <img v-bind:src="item.url">
-                        <div class="introduce">
-                            <p>{{item.name}}</P>
-                            <span>¥{{item.current_price}}</span>
-                        </div>
-                        <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
-                    </li>
-                </template>
-            </mu-list>
-            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"></mu-infinite-scroll>
+            <router-link tag="li" :to="{ path:'detail',query:{id:item.id} }" v-for="(item,index) in listData" v-bind:key="index" class="ceshi">
+                <a>
+                    <img v-bind:src="item.url">
+                    <div class="introduce">
+                        <p>{{item.name}}</P>
+                        <span>¥{{item.current_price}}</span>
+                    </div>
+                    <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
+                </a>
+            </router-link>
+            
+            <li v-for="(item,index) in listData"  v-bind:key="index">
+                <router-link :to="{ path:'detail',query:{id:item.id} }"  v-bind:key="index">
+                    <img v-bind:src="item.url">
+                    <div class="introduce">
+                        <p>{{item.name}}</P>
+                        <span>¥{{item.current_price}}</span>
+                    </div>
+                    <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
+                </router-link>
+            </li>
+            
         </ul>
     </div>
 </template>
@@ -106,9 +115,6 @@ export default {
             this.$ls.set("collectObj",this.collectList)
         }
     },
-    mounted(){
-        // console.log(this.tabData)
-    }
 }
 
 </script>

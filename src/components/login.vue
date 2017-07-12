@@ -1,14 +1,7 @@
 <template>
 <div>
-	<div class="top"></div>
-	<div class="demo-infinite-container">
-		<h3>登录</h3>
-		<input type="text" name="username" class="username" placeholder="请输入用户名" v-model="username">
-		<input type="text" name="password" class="password" placeholder="请输入密码" v-model="password">
-		<!--<p class="produce">个人介绍</p>
-		<textarea rows="3" placeholder="请输入少于30字" maxlength="30" class="txtarea"></textarea>-->
-		<button class="register" v-on:click="submit">登录</button>
-    </div>
+	<div class="top"><goback></goback></div>
+	<user title="登录" @submitEvent="submit"></user>
 	<foot></foot>
 	<div class="reg_dialog" v-if="isSeen">
 		<div>
@@ -25,18 +18,15 @@ import foot from './common/foot.vue'
 export default {
   data () {
     return {
-      num: 10,
-      loading: false,
-      scroller: null,
 	  username:'',
 	  password:'',
 	  isSeen:false,
       loginText:'',
-	  info:[]
+	  info:[],
     }
   },
   components: {
-      foot
+      foot,
   },
   methods:{
 	  submit(){

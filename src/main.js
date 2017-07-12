@@ -7,6 +7,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 import MuseUI from 'muse-ui'
 import ls from 'store'
+import myplus from './components'
 Vue.use({
     install(Vue) {
         Vue.prototype.$Axios = axios;
@@ -14,6 +15,7 @@ Vue.use({
     }
 })
 Vue.use(MuseUI);
+Vue.use(myplus);
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

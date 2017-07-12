@@ -1,17 +1,17 @@
 <template>
 <div class="collect_wrap">
-    <div class="title">我的收藏</div>
+    <div class="title"><goback></goback>我的收藏</div>
     <ul class="tab-content">
-        <template>
-            <li v-for="(item,index) in listData" v-bind:key="index">
+        <router-link tag="li" :to="{ path:'/detail',query:{id:item.id} }" v-for="(item,index) in listData" v-bind:key="index">
+            <a>
                 <img v-bind:src="item.url">
                 <div class="introduce">
                     <p>{{item.name}}</P>
                     <span>¥{{item.current_price}}</span>
                 </div>
                 <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
-            </li>
-        </template>
+            </a>
+        </router-link>
     </ul>
 </div>
 </template>
@@ -42,6 +42,7 @@ export default {
     font-size: 16px;
     text-align: center;
     background: #8cb91e;
+    position: relative;
  }
  </style>
 

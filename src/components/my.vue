@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .top{
     width:100%;
     height:3.3rem;

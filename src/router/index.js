@@ -6,6 +6,7 @@ import register from '@/components/register'
 import login from '@/components/login'
 import my from '@/components/my'
 import mycollect from '@/components/mycollect'
+import detail from '@/components/detail'
 Vue.use(Router)
 export default new Router({
     routes: [{
@@ -37,6 +38,11 @@ export default new Router({
             path: '/mycollect',
             name: 'mycollect',
             component: mycollect
+        },
+        {
+            path: '/detail',
+            name: 'detail',
+            component: detail
         }
     ]
 })
