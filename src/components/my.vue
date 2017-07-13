@@ -9,7 +9,7 @@
         <router-link to="/mycollect">
             <div class="my_info my_collect"><i></i><span>我的收藏</span><em></em></div>
         </router-link>
-        <div class="my_info my_message"><i></i><span>我的消息</span><em></em></div>
+        <div class="my_info my_message"><i></i><span>我(id:{{$route.query.userid}})的消息</span><em></em></div>
         <foot></foot>
     </div>
     

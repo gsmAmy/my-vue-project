@@ -1,16 +1,15 @@
 <template>
 <div>
 	<div class="top"><goback></goback></div>
-	<user title="注册" @submitEvent="submit"></user>
+	<!-- <user title="注册" @submitEvent="submit"></user> -->
+	<div class="demo-infinite-container">
+		<h3>注册</h3>
+		<input type="text" name="username" class="username" placeholder="请输入用户名"v-model="username">
+		<input type="text" name="password" class="password" placeholder="请输入密码"v-model="password">
+		<button class="register"v-on:click="submit">注册</button>
+    </div>
 	<foot></foot>
-	<div class="reg_dialog" v-if="isSeen">
-		<div>
-			<p class="regsuccess">注册成功</p>
-			<router-link to="/login">
-				<p class="sure">去登录</p>
-			</router-link>
-		</div>
-	</div>
+	<mydialog message="注册成功" action-name="去登录" v-if="isSeen"></mydialog>
 </div>
 </template>
 <script>

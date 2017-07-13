@@ -6,7 +6,7 @@
 		<router-link to="/collect">
 			<span>记录</span>
 		</router-link>
-		<router-link to="/my">
+		<router-link :to="{path:'/my',query:{userid:'24324'}}">
 			<span>我</span>
 		</router-link>
 	</div>

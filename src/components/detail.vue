@@ -1,6 +1,6 @@
 <template>
     <div class="detail-wrap">
-        <div>{{fruitId}}</div>
+        <div>产品编号：{{$route.params.id}}</div>
     </div>
 </template>
 <script>
@@ -9,10 +9,6 @@ export default {
         return {
             fruitId:''
         }
-    },
-    created(){
-        let id = this.$route.query.id;
-        this.fruitId = id;
     }
 }
 </script>

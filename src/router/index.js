@@ -40,7 +40,7 @@ export default new Router({
             component: mycollect
         },
         {
-            path: '/detail',
+            path: '/detail/:id',
             name: 'detail',
             component: detail
         }

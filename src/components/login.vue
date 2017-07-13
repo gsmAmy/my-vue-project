@@ -1,16 +1,15 @@
 <template>
 <div>
 	<div class="top"><goback></goback></div>
-	<user title="登录" @submitEvent="submit"></user>
+	<!-- <user title="登录" @submitEvent="submit"></user> -->
+    <div class="demo-infinite-container">
+		<h3>登录</h3>
+		<input type="text" name="username" class="username" placeholder="请输入用户名" v-model="username">
+		<input type="text" name="password" class="password" placeholder="请输入密码"  v-model="password  ">
+		<button class="register"v-on:click="submit">登录</button>
+    </div>
 	<foot></foot>
-	<div class="reg_dialog" v-if="isSeen">
-		<div>
-			<p class="regsuccess">{{ loginText }}</p>
-			<router-link to="/home">
-				<p class="sure">确定</p>
-			</router-link>
-		</div>
-	</div>
+    <mydialog v-bind:message="loginText" action-name="确定" v-if="isSeen"></mydialog>
 </div>
 </template>
 <script>
@@ -35,8 +34,9 @@ export default {
         $this.isSeen = true;
         Array.from(info).forEach(item => {
             if($this.username == item.username && $this.password == item.password ){
+                console.log("hdosji");
                 item.islogin = 1;
-                $this.loginText = "登录成功"
+                $this.loginText = "登录成功";
             }else{
                 $this.loginText = "登录失败，用户名或密码错误"
             }

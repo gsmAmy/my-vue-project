@@ -3,13 +3,15 @@
  */
 import goback from './common/goback.vue';
 import user from './common/user.vue';
+import mydialog from './common/dialog.vue'
 
 /**
  * 把组件同意放到一个对象里面
  */
 let mycomponents = {
     goback,
-    user
+    user,
+    mydialog
 }
 
 /**

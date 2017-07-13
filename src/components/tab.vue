@@ -4,7 +4,7 @@
             <span v-for="(item,index) in tabData" v-bind:class="{active:index==current}" @click="getContent(index)" v-bind:key="index">{{item.title}}</span>
         </div>
         <ul class="tab-content">
-            <router-link tag="li" :to="{ path:'detail',query:{id:item.id} }" v-for="(item,index) in listData" v-bind:key="index" class="ceshi">
+            <li v-for="(item,index) in listData" v-bind:key="index" class="ceshi" @click="toDetail(item.id)">
                 <a>
                     <img v-bind:src="item.url">
                     <div class="introduce">
@@ -13,19 +13,7 @@
                     </div>
                     <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
                 </a>
-            </router-link>
-            
-            <li v-for="(item,index) in listData"  v-bind:key="index">
-                <router-link :to="{ path:'detail',query:{id:item.id} }"  v-bind:key="index">
-                    <img v-bind:src="item.url">
-                    <div class="introduce">
-                        <p>{{item.name}}</P>
-                        <span>¥{{item.current_price}}</span>
-                    </div>
-                    <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
-                </router-link>
             </li>
-            
         </ul>
     </div>
 </template>
@@ -51,7 +39,6 @@ export default {
         }
     },
     mounted() {
-        this.scroller = this.$el;
     },
     computed: {
         url: function () {
@@ -112,8 +99,12 @@ export default {
                 })
                 this.collectList = collectObjNew;
             }
-            this.$ls.set("collectObj",this.collectList)
-        }
+            this.$ls.set("collectObj`   0",this.collectList)
+        },
+        /*动态路由 跳转详情页*/
+        toDetail(id){
+            this.$router.push({path:`/detail/${id}`}); 
+        }　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
     },
 }
 
