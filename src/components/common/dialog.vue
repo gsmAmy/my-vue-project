@@ -2,15 +2,18 @@
     <div class="reg_dialog">
 		<div>
 			<p class="regsuccess">{{message}}</p>
-			<router-link to="/home">
-				<p class="sure">{{actionName}}</p>
-			</router-link>
+			<p class="sure" @click = "sureFn">{{actionName}}</p>
 		</div>
 	</div>
  </template>
  <script>
  export default {
-     props:['message','actionName']
+	 props: ['message','actionName'],
+	 methods: {
+		sureFn(){
+			this.$emit('sureButtonFn');
+		}
+	 }
  }
  </script>
 <style lang="less">

@@ -1,7 +1,6 @@
 <template>
 <div>
 	<div class="top"><goback></goback></div>
-	<!-- <user title="登录" @submitEvent="submit"></user> -->
     <div class="demo-infinite-container">
 		<h3>登录</h3>
 		<input type="text" name="username" class="username" placeholder="请输入用户名" v-model="username">
@@ -9,7 +8,7 @@
 		<button class="register"v-on:click="submit">登录</button>
     </div>
 	<foot></foot>
-    <mydialog v-bind:message="loginText" action-name="确定" v-if="isSeen"></mydialog>
+    <mydialog v-bind:message="loginText" action-name="确定" v-if="isSeen" v-on:sureButtonFn = 'toPage'></mydialog>
 </div>
 </template>
 <script>
@@ -34,7 +33,6 @@ export default {
         $this.isSeen = true;
         Array.from(info).forEach(item => {
             if($this.username == item.username && $this.password == item.password ){
-                console.log("hdosji");
                 item.islogin = 1;
                 $this.loginText = "登录成功";
             }else{
@@ -42,7 +40,14 @@ export default {
             }
         })
         sessionStorage.setItem("info",JSON.stringify(info));
-	  }
+      },
+      toPage(){
+          if(this.loginText == '登录成功'){
+              this.$router.push({path:'/home'});
+          }else{
+              this.isSeen = false;
+          }
+      }
   }
 }
 </script>

@@ -1,15 +1,14 @@
 <template>
 <div>
-	<div class="top"><goback></goback></div>
-	<!-- <user title="注册" @submitEvent="submit"></user> -->
-	<div class="demo-infinite-container">
-		<h3>注册</h3>
-		<input type="text" name="username" class="username" placeholder="请输入用户名"v-model="username">
-		<input type="text" name="password" class="password" placeholder="请输入密码"v-model="password">
-		<button class="register"v-on:click="submit">注册</button>
-    </div>
-	<foot></foot>
-	<mydialog message="注册成功" action-name="去登录" v-if="isSeen"></mydialog>
+		<div class="top"><goback></goback></div>
+		<div class="demo-infinite-container">
+				<h3>注册</h3>
+				<input type="text" name="username" class="username" placeholder="请输入用户名"v-model="username">
+				<input type="text" name="password" class="password" placeholder="请输入密码"v-model="password">
+				<button class="register"v-on:click="submit">注册</button>
+		</div>
+		<foot></foot>
+		<mydialog message="注册成功" action-name="去登录" v-if="isSeen" v-on:sureButtonFn = 'toPage'></mydialog>
 </div>
 </template>
 <script>
@@ -31,7 +30,10 @@ export default {
 			this.isSeen = true;
 			this.info.push({"username":this.username,"password":this.password,"islogin":0});
 			sessionStorage.setItem("info",JSON.stringify(this.info));
-	  }
+		},
+		toPage(){
+			this.$router.push({path:'/login'});
+		}
   }
 }
 </script>
