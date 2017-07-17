@@ -2,7 +2,7 @@
 <div>
 		<div class="top"><goback></goback></div>
 		<div class="demo-infinite-container">
-				<h3>注册</h3>
+				<h3 @click="test">注册</h3>
 				<input type="text" name="username" class="username" placeholder="请输入用户名"v-model="username">
 				<input type="text" name="password" class="password" placeholder="请输入密码"v-model="password">
 				<button class="register"v-on:click="submit">注册</button>
@@ -33,6 +33,9 @@ export default {
 		},
 		toPage(){
 			this.$router.push({path:'/login'});
+		},
+		test(){
+			bus.$emit('chuan',1);
 		}
   }
 }

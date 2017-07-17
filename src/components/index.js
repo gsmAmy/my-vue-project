@@ -1,8 +1,8 @@
 /**
  * 引入需要全局注册的插件
  */
+import Vue from 'vue';
 import goback from './common/goback.vue';
-import user from './common/user.vue';
 import mydialog from './common/dialog.vue'
 
 /**
@@ -10,8 +10,11 @@ import mydialog from './common/dialog.vue'
  */
 let mycomponents = {
     goback,
-    user,
     mydialog
+}
+
+let libs = {
+    bus: new Vue()
 }
 
 /**
@@ -27,5 +30,9 @@ export default {
         Object.keys(mycomponents).forEach(key => {
             Vue.component(key, mycomponents[key]);
         })
+        Object.keys(libs).forEach(key => {
+            Vue.prototype[`$${key}`] = libs[key];
+        })
     }
+
 }

@@ -23,6 +23,11 @@ export default {
 	  info:[],
     }
   },
+  created(){
+      bus.$on('chuan',function(id){
+        console.log(id);
+    })
+  },
   components: {
       foot,
   },
