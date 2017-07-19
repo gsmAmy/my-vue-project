@@ -18,25 +18,20 @@
 export default{
     data(){
         return{
-            user:'右边点击登录哦',
             isShow:false,
         }
     },
     created(){
-         this.isLogin();
     },
     methods: {
-        isLogin(){
-            let info = sessionStorage.getItem("info") ? JSON.parse(sessionStorage.getItem("info")):'';
-            let $this = this;
-            Array.from(info).forEach(item => {
-                if(item.islogin == 1){
-                    $this.user = item.username+ ",欢迎您来到乐园" 
-                }
-            })            
-        },
         showLogin(){
             this.isShow = !this.isShow;
+        }
+    },
+    computed:{
+        user(){
+            var username = sessionStorage.getItem('username');
+            return username ? username  + ',欢迎您来到乐园':'右边点击登录哦';
         }
     }
 }

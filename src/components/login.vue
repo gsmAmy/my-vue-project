@@ -19,32 +19,26 @@ export default {
 	  username:'',
 	  password:'',
 	  isSeen:false,
-      loginText:'',
 	  info:[],
     }
   },
   created(){
-      bus.$on('chuan',function(id){
-        console.log(id);
-    })
+    //   bus.$on('chuan',function(id){
+    //     console.log(id);
+    //   })
   },
   components: {
       foot,
   },
+  computed:{
+      loginText(){
+          return (this.$store.state.isLogin == 1 && this.$store.state.username == this.username)? '登录成功':'登录失败，用户名或密码错误'
+      }
+  },
   methods:{
 	  submit(){
-        let info = sessionStorage.getItem("info")?JSON.parse(sessionStorage.getItem("info")) : '';
-        let $this = this;
-        $this.isSeen = true;
-        Array.from(info).forEach(item => {
-            if($this.username == item.username && $this.password == item.password ){
-                item.islogin = 1;
-                $this.loginText = "登录成功";
-            }else{
-                $this.loginText = "登录失败，用户名或密码错误"
-            }
-        })
-        sessionStorage.setItem("info",JSON.stringify(info));
+        this.isSeen = true;
+        this.$store.commit('inLogin',{username:this.username,password:this.password});
       },
       toPage(){
           if(this.loginText == '登录成功'){
@@ -53,7 +47,7 @@ export default {
               this.isSeen = false;
           }
       }
-  }
+  },
 }
 </script>
 

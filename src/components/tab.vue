@@ -99,7 +99,7 @@ export default {
                 })
                 this.collectList = collectObjNew;
             }
-            this.$ls.set("collectObj`   0",this.collectList)
+            this.$ls.set("collectObj",this.collectList)
         },
         /*动态路由 跳转详情页*/
         toDetail(id){
