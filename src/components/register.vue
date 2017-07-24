@@ -28,8 +28,10 @@ export default {
   methods:{
 	  submit(){
 			this.isSeen = true;
-			this.info.push({"username":this.username,"password":this.password,"islogin":0});
-			sessionStorage.setItem("info",JSON.stringify(this.info));
+			this.$store.commit('registerFn',{
+				username:this.username,
+				password:this.password
+			});
 		},
 		toPage(){
 			this.$router.push({path:'/login'});

@@ -21,20 +21,23 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
         state: {
             username: '',
-            isLogin: 0
+            password: '',
+            registerInfo: []
         },
         mutations: {
             inLogin(state, params) {
-                let info = sessionStorage.getItem("info") ? JSON.parse(sessionStorage.getItem("info")) : '';
+                let info = state.registerInfo ? state.registerInfo : '';
                 Array.from(info).forEach(item => {
                     if (params.username == item.username && params.password == item.password) {
-                        item.islogin = 1;
+                        //保存信息到store中,便于其他组件取用
                         state.username = item.username;
-                        state.isLogin = 1;
-                        sessionStorage.setItem('username', state.username);
+                        state.password = item.password;
                     }
                 })
-                sessionStorage.setItem("info", JSON.stringify(info));
+            },
+            registerFn(state, params) {
+                //保存注册用户信息
+                state.registerInfo.push({ username: params.username, password: params.password });
             }
         }
     })

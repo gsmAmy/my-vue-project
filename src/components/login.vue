@@ -32,7 +32,7 @@ export default {
   },
   computed:{
       loginText(){
-          return (this.$store.state.isLogin == 1 && this.$store.state.username == this.username)? '登录成功':'登录失败，用户名或密码错误'
+          return (this.$store.state.password == this.password && this.$store.state.username == this.username)? '登录成功':'登录失败，用户名或密码错误'
       }
   },
   methods:{
