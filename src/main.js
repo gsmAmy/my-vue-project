@@ -19,29 +19,34 @@ Vue.use(MuseUI);
 Vue.use(myplus);
 Vue.use(Vuex);
 const store = new Vuex.Store({
-        state: {
-            username: '',
-            password: '',
-            registerInfo: []
+    state: {
+        username: '',
+        password: '',
+        registerInfo: []
+    },
+    mutations: {
+        inLogin(state, params) {
+            let info = state.registerInfo ? state.registerInfo : '';
+            Array.from(info).forEach(item => {
+                if (params.username == item.username && params.password == item.password) {
+                    //保存信息到store中,便于其他组件取用
+                    state.username = item.username;
+                    state.password = item.password;
+                }
+            })
         },
-        mutations: {
-            inLogin(state, params) {
-                let info = state.registerInfo ? state.registerInfo : '';
-                Array.from(info).forEach(item => {
-                    if (params.username == item.username && params.password == item.password) {
-                        //保存信息到store中,便于其他组件取用
-                        state.username = item.username;
-                        state.password = item.password;
-                    }
-                })
-            },
-            registerFn(state, params) {
-                //保存注册用户信息
-                state.registerInfo.push({ username: params.username, password: params.password });
-            }
+        registerFn(state, params) {
+            //保存注册用户信息
+            state.registerInfo.push({ username: params.username, password: params.password });
+        },
+        outLogin(state) {
+            state.username = '';
+            state.password = '';
         }
-    })
-    /* eslint-disable no-new */
+    }
+})
+
+/* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,

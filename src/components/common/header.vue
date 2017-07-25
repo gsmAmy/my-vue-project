@@ -5,9 +5,7 @@
         <span class="extend"@click="showLogin">
             <i></i>
             <div class="login" v-if="isShow">
-                <router-link to='/login'>
-                    <p>登录</p>
-                </router-link>
+                <p @click='dealLogin'>{{loginState}}</p>
                 <router-link to="/register">
                     <p>注册</p>
                 </router-link>
@@ -18,6 +16,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default{
     data(){
         return{
@@ -29,13 +28,33 @@ export default{
     methods: {
         showLogin(){
             this.isShow = !this.isShow;
+        },
+        dealLogin(){
+            if(this.$store.state.username){
+                this.$store.commit('outLogin')
+            }else{
+                this.$router.push({path:'/login'})
+            }
         }
     },
     computed:{
-        user(){
-            var username = this.$store.state.username;
-            return username ? username  + ',欢迎您来到乐园':'右边点击登录哦';
-        }
+        /* user(){
+            return  this.username ? this.username  + ',欢迎您来到乐园':'右边点击登录哦';
+        }, */
+        loginState(){
+            return this.username ? '退出登录':'登录'
+        },
+        //
+        /**mapState将store中的属性映射到组件中，可以直接this.username 代替 this.$store.state.
+         * 写法② ...mapState({username:state=>state.username})
+         */
+        ...mapState(['username']),
+        /* 可以直接如上user()写法，本写法纯属练习下写法② */
+        ...mapState({
+            user:state=>{
+                return state.username ? state.username  + ',欢迎您来到乐园':'右边点击登录哦';
+            }
+        })
     }
 }
 </script>

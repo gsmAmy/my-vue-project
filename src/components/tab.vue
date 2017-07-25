@@ -11,7 +11,7 @@
                         <p>{{item.name}}</P>
                         <span>¥{{item.current_price}}</span>
                     </div>
-                    <i v-bind:class="[item.islike?'i_likes':'i_like']" @click="collect(item)"></i>
+                    <i v-bind:class="[item.islike?'i_likes':'i_like']" @click.stop="collect(item)"></i>
                 </a>
             </li>
         </ul>
