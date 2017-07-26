@@ -1,7 +1,6 @@
 <template>
     <div class="my_wrap">
         <myheader></myheader>
-        <canvas id="canvas" wigth="200" height="200"></canvas>
         <div class="top"></div>
         <router-link to="/register">
             <div class="my_info my_collect"><i></i><span>注册</span><em></em></div>
