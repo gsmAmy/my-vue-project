@@ -23,11 +23,9 @@ export default {
         myheader
     },
     mounted(){
-        this.init();
     },
     methods:{
     }
-    
 }
 </script>
 
