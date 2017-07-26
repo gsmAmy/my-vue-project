@@ -1,8 +1,8 @@
 <template>
     <div class="my_wrap">
-        <router-link to="/login">
-            <div class="top"><i></i>点击登录</div>
-        </router-link>
+        <myheader></myheader>
+        <canvas id="canvas" wigth="200" height="200"></canvas>
+        <div class="top"></div>
         <router-link to="/register">
             <div class="my_info my_collect"><i></i><span>注册</span><em></em></div>
         </router-link>
@@ -15,11 +15,19 @@
     
 </template>
 <script>
-import foot from './common/foot.vue'
+import foot from './common/foot.vue';
+import myheader from './common/header.vue';
 export default {
-     components: {
-      foot
-  },
+    components: {
+        foot,
+        myheader
+    },
+    mounted(){
+        this.init();
+    },
+    methods:{
+    }
+    
 }
 </script>
 
@@ -28,20 +36,16 @@ export default {
     width:100%;
     height:3.3rem;
     text-align: center;
-    background: url("../assets/images/my_bg.jpg") no-repeat;
-    /*background: #388EFF;*/
-    background: linear-gradient(to right, #0af, #0085ff); /* 标准的语法 */
     background-size: cover;
     border-bottom:1px solid #dcdcdc;
-    color:#fff;
     position: relative;
     padding-top:1.8rem;
     box-sizing: border-box;
     font-size: 16px;
 }
 .top i{
-    background: url("../assets/images/yl.png");
-    background-size:contain;
+    background: url("../assets/images/yl.png") no-repeat center;
+    background-size:60% 60%;
     position: absolute;
     top:1rem;
     left:50%;
@@ -53,6 +57,7 @@ export default {
     border-bottom:1px solid #dcdcdc;
     padding-left:0.2rem;
     position: relative;
+    background: linear-gradient(to right,#E9E2E3,#F0EFEC);
 }
 .my_info i,.top i{
     display: inline-block;

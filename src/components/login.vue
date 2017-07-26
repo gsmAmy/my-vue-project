@@ -4,7 +4,7 @@
     <div class="demo-infinite-container">
 		<h3>登录</h3>
 		<input type="text" name="username" class="username" placeholder="请输入用户名" v-model="username">
-		<input type="text" name="password" class="password" placeholder="请输入密码"  v-model="password  ">
+		<input type="text" name="password" class="password" placeholder="请输入密码"  v-model="password">
 		<button class="register"v-on:click="submit">登录</button>
     </div>
 	<foot></foot>
@@ -51,6 +51,6 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../assets/less/login.less";
 </style>
