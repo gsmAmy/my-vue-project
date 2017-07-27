@@ -1,14 +1,12 @@
 <template>
     <div class="my_wrap">
         <myheader></myheader>
-        <div class="top"></div>
-        <router-link to="/register">
-            <div class="my_info my_collect"><i></i><span>注册</span><em></em></div>
-        </router-link>
+        <div class="mytop"></div>
+        <div class="my_info my_collect"><i></i><span>嘻嘻</span><em></em></div>
         <router-link to="/mycollect">
             <div class="my_info my_collect"><i></i><span>我的收藏</span><em></em></div>
         </router-link>
-        <div class="my_info my_message"><i></i><span>我(id:{{$route.query.userid}})的消息</span><em></em></div>
+        <div class="my_info my_message"><i></i><span>我({{$route.query.username}})的消息</span><em></em></div>
         <foot></foot>
     </div>
     
@@ -29,16 +27,16 @@ export default {
 </script>
 
 <style scoped>
-.top{
+.mytop{
     width:100%;
     height:3.3rem;
     text-align: center;
-    background-size: cover;
     border-bottom:1px solid #dcdcdc;
     position: relative;
     padding-top:1.8rem;
     box-sizing: border-box;
     font-size: 16px;
+   
 }
 .top i{
     background: url("../assets/images/yl.png") no-repeat center;

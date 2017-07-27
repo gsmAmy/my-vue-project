@@ -6,19 +6,29 @@
 		<router-link to="/collect">
 			<span>记录</span>
 		</router-link>
-		<router-link :to="{path:'/my',query:{userid:'24324'}}">
-			<span>我</span>
-		</router-link>
+		<a @click="linkTo"><span>我</span></a>
 	</div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
 	created(){
 
 	},
 	methods: {
-
+		linkTo(){
+			if(this.username){
+				this.$router.push({path:'/my',query:{username:this.username}})
+			}else{
+				this.$router.push({path:'/login'})
+			}
+		}
+	},
+	computed:{
+		...mapState({
+			username:state=>state.username
+		})
 	}
 }
 </script>

@@ -44,12 +44,10 @@ export default{
         loginState(){
             return this.username ? '退出登录':'登录'
         },
-        //
-        /**mapState将store中的属性映射到组件中，可以直接this.username 代替 this.$store.state.
-         * 写法② ...mapState({username:state=>state.username})
-         */
+        /*mapState将store中的属性映射到组件中，可以直接this.username 代替 this.$store.state.username */
+        /*写法1*/
         ...mapState(['username']),
-        /* 可以直接如上user()写法，本写法纯属练习下写法② */
+        /*写法2 ...mapState({username:state=>state.username}) 可以直接如上user()写法，以下纯属练习下写法2*/
         ...mapState({
             user:state=>{
                 return state.username ? state.username  + ',欢迎您来到乐园':'右边点击登录哦';
